@@ -3,6 +3,10 @@ import util
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Home Price Prediction API is running!"
+
 
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
@@ -13,7 +17,7 @@ def get_location_names():
 
     return response
 
-@app.route('/predict_home_price', methods=['GET', 'POST'])
+@app.route('/predict_home_price', methods=['POST'])
 def predict_home_price():
     total_sqft = float(request.form['total_sqft'])
     location = request.form['location']
